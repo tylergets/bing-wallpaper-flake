@@ -37,4 +37,7 @@ in {
       };
     })
   ];
-}```
+}
+```
+
+This will give you a new daily wallpaper each time you run `nix flake update`
