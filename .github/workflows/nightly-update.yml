@@ -1,0 +1,16 @@
+name: Nightly Update
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs every day at midnight UTC
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Run update script
+      run: ./update.sh
