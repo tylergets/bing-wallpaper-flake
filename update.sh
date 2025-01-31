@@ -1,8 +1,12 @@
 #! /usr/bin/env nix-shell
 #! nix-shell -i bash -p curl jq
 
-# Make a curl call to a sample API and parse the JSON response
-response=$(curl -s https://api.example.com/data)
-parsed_value=$(echo "$response" | jq '.key')
+BING_URL="https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US"
 
-echo "Parsed value: $parsed_value"
+RESPONSE=$(curl -s $BING_URL)
+IMAGE_URL_VAL=$(echo "$RESPONSE" | jq -r '.images[0].url')
+IMAGE_URL="https://www.bing.com$IMAGE_URL_VAL"
+
+echo $IMAGE_URL
+
+
